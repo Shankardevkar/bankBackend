@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0284c7">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Dashboard - Bank Management</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            },
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen font-sans antialiased">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-lg border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-14 sm:h-16">
+        <div class="flex items-center">
+          <h1
+            class="text-lg sm:text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent truncate max-w-[200px] sm:max-w-none">
+            Bank Management System
+          </h1>
+        </div>
+        <div class="flex items-center space-x-2 sm:space-x-4">
+          <a href="/dashboard"
+            class="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 rounded-md hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95">
+            Dashboard
+          </a>
+          <a href="/logout"
+            class="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-md transition-all duration-200 active:scale-95">
+            Logout
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-3 sm:px-6 lg:px-8 py-3 sm:py-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+      <!-- Balance Card -->
+      <div
+        class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden touch-manipulation">
+        <div class="p-4 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-base sm:text-lg font-semibold text-gray-900">Account Balance</h2>
+            <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                <path fill-rule="evenodd"
+                  d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+          <div id="balanceContainer" class="text-center cursor-pointer" onclick="showPinModal('check')">
+            <div id="balance" class="hidden text-2xl sm:text-4xl font-bold text-gray-900">Loading...</div>
+            <div id="balanceHidden" class="flex items-center justify-center space-x-2 py-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 text-gray-400" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <span class="text-sm sm:text-base text-gray-500">Tap to check balance</span>
+            </div>
+          </div>
+        </div>
+        <div class="px-4 sm:px-6 pb-4 sm:pb-6">
+          <div class="grid grid-cols-2 gap-3 sm:gap-4">
+            <button onclick="showModal('deposit')"
+              class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-green-500 to-green-600 rounded-lg hover:from-green-600 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200 shadow-sm hover:shadow-md">
+              Deposit
+            </button>
+            <button onclick="showModal('withdraw')"
+              class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-red-500 to-red-600 rounded-lg hover:from-red-600 hover:to-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-200 shadow-sm hover:shadow-md">
+              Withdraw
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Account Details Card -->
+      <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+        <div class="p-4 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-base sm:text-lg font-semibold text-gray-900">Account Details</h2>
+            <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+          <div id="accountInfo" class="space-y-3 text-gray-600">Loading...</div>
+        </div>
+        <div class="px-4 sm:px-6 pb-4 sm:pb-6">
+          <div class="flex flex-col space-y-3">
+            <button onclick="showModal('update')"
+              class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 rounded-lg hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm hover:shadow-md">
+              Update Account
+            </button>
+            <button onclick="showPinUpdateModal()"
+              class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+              Update PIN
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Transactions Card -->
+      <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+        <div class="p-4 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-base sm:text-lg font-semibold text-gray-900">Recent Transactions</h2>
+            <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 4a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-4 1a1 1 0 00-1 1v2a1 1 0 102 0v-2a1 1 0 00-1-1z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+          </div>
+          <div class="flex justify-between items-center text-xs sm:text-sm font-medium text-gray-500 pb-2 border-b">
+            <span>Transaction</span>
+            <span>Amount</span>
+          </div>
+          <div id="transactions"
+            class="space-y-3 max-h-[300px] sm:max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+            <div class="text-gray-600 text-center py-4">Loading transactions...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Transaction Modal -->
+  <div id="transactionModal"
+    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-md transform transition-all">
+      <div class="px-4 sm:px-6 py-4 border-b border-gray-100">
+        <h2 id="modalTitle" class="text-lg sm:text-xl font-semibold text-gray-900">Transaction</h2>
+      </div>
+      <form id="transactionForm" onsubmit="handleTransaction(event)" class="px-4 sm:px-6 py-4 space-y-4">
+        <div>
+          <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
+          <div class="mt-1 relative rounded-md shadow-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <span class="text-gray-500 sm:text-sm">₹</span>
+            </div>
+            <input type="number" id="amount" name="amount" step="0.01" min="0.01" required
+              class="pl-7 block w-full rounded-lg border-gray-300 focus:ring-primary-500 focus:border-primary-500">
+          </div>
+        </div>
+        <div>
+          <label for="description" class="block text-sm font-medium text-gray-700">Description (Optional)</label>
+          <input type="text" id="description" name="description"
+            class="mt-1 block w-full rounded-lg border-gray-300 focus:ring-primary-500 focus:border-primary-500">
+        </div>
+        <input type="hidden" id="transactionType" name="transactionType">
+        <div class="flex space-x-3 pt-2">
+          <button type="submit"
+            class="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 rounded-lg hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm hover:shadow-md">
+            Submit
+          </button>
+          <button type="button" onclick="hideModal()"
+            class="flex-1 px-4 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Update Account Modal -->
+  <div id="updateModal"
+    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-md transform transition-all">
+      <div class="px-4 sm:px-6 py-4 border-b border-gray-100">
+        <h2 class="text-lg sm:text-xl font-semibold text-gray-900">Update Account</h2>
+      </div>
+      <form id="updateForm" onsubmit="handleUpdate(event)" class="px-4 sm:px-6 py-4 space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+            <input type="text" id="firstName" name="firstName" required
+              class="mt-1 block w-full rounded-lg border-gray-300 focus:ring-primary-500 focus:border-primary-500">
+          </div>
+          <div>
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required
+              class="mt-1 block w-full rounded-lg border-gray-300 focus:ring-primary-500 focus:border-primary-500">
+          </div>
+        </div>
+        <div>
+          <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Phone Number</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber" required
+            class="mt-1 block w-full rounded-lg border-gray-300 focus:ring-primary-500 focus:border-primary-500">
+        </div>
+        <div>
+          <label for="address" class="block text-sm font-medium text-gray-700">Address</label>
+          <textarea id="address" name="address" rows="2" required
+            class="mt-1 block w-full rounded-lg border-gray-300 focus:ring-primary-500 focus:border-primary-500"></textarea>
+        </div>
+        <div class="flex space-x-3 pt-2">
+          <button type="submit"
+            class="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 rounded-lg hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm hover:shadow-md">
+            Update
+          </button>
+          <button type="button" onclick="hideUpdateModal()"
+            class="flex-1 px-4 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- PIN Modal -->
+  <div id="pinModal"
+    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-md transform transition-all">
+      <div class="px-6 py-4 border-b border-gray-100">
+        <h2 id="pinModalTitle" class="text-xl font-semibold text-gray-900">Enter PIN</h2>
+      </div>
+      <div class="px-6 py-4 space-y-4">
+        <div id="pinSetupMessage" class="hidden text-sm text-gray-600 mb-4">
+          Please set up a 6-digit PIN to secure your balance checking
+        </div>
+        <div id="pinConfirmMessage" class="hidden text-sm text-gray-600 mb-4">
+          Please confirm your PIN
+        </div>
+        <div class="flex justify-center space-x-3 mb-4">
+          <div class="w-3 h-3 rounded-full bg-gray-200" id="pin1"></div>
+          <div class="w-3 h-3 rounded-full bg-gray-200" id="pin2"></div>
+          <div class="w-3 h-3 rounded-full bg-gray-200" id="pin3"></div>
+          <div class="w-3 h-3 rounded-full bg-gray-200" id="pin4"></div>
+          <div class="w-3 h-3 rounded-full bg-gray-200" id="pin5"></div>
+          <div class="w-3 h-3 rounded-full bg-gray-200" id="pin6"></div>
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          <button type="button" onclick="handlePinInput('1')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">1</button>
+          <button type="button" onclick="handlePinInput('2')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">2</button>
+          <button type="button" onclick="handlePinInput('3')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">3</button>
+          <button type="button" onclick="handlePinInput('4')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">4</button>
+          <button type="button" onclick="handlePinInput('5')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">5</button>
+          <button type="button" onclick="handlePinInput('6')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">6</button>
+          <button type="button" onclick="handlePinInput('7')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">7</button>
+          <button type="button" onclick="handlePinInput('8')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">8</button>
+          <button type="button" onclick="handlePinInput('9')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">9</button>
+          <button type="button" onclick="hidePinModal()"
+            class="p-4 text-xl font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors">✕</button>
+          <button type="button" onclick="handlePinInput('0')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">0</button>
+          <button type="button" onclick="handlePinInput('clear')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">←</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PIN Update Modal -->
+  <div id="pinUpdateModal"
+    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-md transform transition-all">
+      <div class="px-6 py-4 border-b border-gray-100">
+        <h2 class="text-xl font-semibold text-gray-900">Update PIN</h2>
+      </div>
+      <div class="p-6 space-y-6">
+        <!-- Current PIN -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-4">Current PIN</label>
+          <div class="flex justify-center space-x-3 mb-6">
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="currentPin1"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="currentPin2"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="currentPin3"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="currentPin4"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="currentPin5"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="currentPin6"></div>
+          </div>
+        </div>
+
+        <!-- New PIN -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-4">New PIN</label>
+          <div class="flex justify-center space-x-3 mb-6">
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="newPin1"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="newPin2"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="newPin3"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="newPin4"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="newPin5"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="newPin6"></div>
+          </div>
+        </div>
+
+        <!-- Confirm New PIN -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-4">Confirm New PIN</label>
+          <div class="flex justify-center space-x-3">
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="confirmPin1"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="confirmPin2"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="confirmPin3"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="confirmPin4"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="confirmPin5"></div>
+            <div class="w-3 h-3 rounded-full bg-gray-200" id="confirmPin6"></div>
+          </div>
+        </div>
+
+        <!-- Keypad -->
+        <div class="grid grid-cols-3 gap-4 mt-6">
+          <button type="button" onclick="handlePinUpdateInput('1')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">1</button>
+          <button type="button" onclick="handlePinUpdateInput('2')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">2</button>
+          <button type="button" onclick="handlePinUpdateInput('3')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">3</button>
+          <button type="button" onclick="handlePinUpdateInput('4')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">4</button>
+          <button type="button" onclick="handlePinUpdateInput('5')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">5</button>
+          <button type="button" onclick="handlePinUpdateInput('6')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">6</button>
+          <button type="button" onclick="handlePinUpdateInput('7')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">7</button>
+          <button type="button" onclick="handlePinUpdateInput('8')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">8</button>
+          <button type="button" onclick="handlePinUpdateInput('9')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">9</button>
+          <button type="button" onclick="hidePinUpdateModal()"
+            class="p-4 text-xl font-medium text-red-600 hover:bg-red-50 rounded-lg transition-colors">✕</button>
+          <button type="button" onclick="handlePinUpdateInput('0')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">0</button>
+          <button type="button" onclick="handlePinUpdateInput('clear')"
+            class="p-4 text-xl font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors">←</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Format currency
+    function formatCurrency(amount) {
+      return new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR'
+      }).format(amount);
+    }
+
+    // Format date
+    function formatDate(dateString) {
+      return new Date(dateString).toLocaleString('en-IN', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    // Fetch account details
+    function fetchAccountDetails() {
+      fetch('/api/banking/account', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch account details');
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.error) {
+            throw new Error(data.error);
+          }
+          const accountInfo = document.getElementById('accountInfo');
+          accountInfo.innerHTML = `
+            <div class="space-y-2 sm:space-y-3">
+              <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                <span class="text-xs sm:text-sm text-gray-500">Account Number</span>
+                <span class="text-xs sm:text-sm font-medium text-gray-900">${data.accountNumber}</span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                <span class="text-xs sm:text-sm text-gray-500">Account Type</span>
+                <span class="text-xs sm:text-sm font-medium text-gray-900">${data.accountType}</span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                <span class="text-xs sm:text-sm text-gray-500">Name</span>
+                <span class="text-xs sm:text-sm font-medium text-gray-900">${data.firstName} ${data.lastName}</span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                <span class="text-xs sm:text-sm text-gray-500">Phone</span>
+                <span class="text-xs sm:text-sm font-medium text-gray-900">${data.phoneNumber}</span>
+              </div>
+              <div class="flex items-center justify-between py-2 border-b border-gray-100">
+                <span class="text-xs sm:text-sm text-gray-500">Address</span>
+                <span class="text-xs sm:text-sm font-medium text-gray-900 text-right flex-1 ml-4">${data.address}</span>
+              </div>
+            </div>
+          `;
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('accountInfo').innerHTML =
+            `<div class="text-red-600 text-center py-4 text-sm">${error.message}</div>`;
+          `<div class="text-red-600 text-center py-4">${error.message}</div>`;
+        });
+    }
+
+    // Fetch account balance
+    function fetchBalance() {
+      fetch('/api/banking/balance', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include'
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch balance');
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.error) {
+            throw new Error(data.error);
+          }
+          document.getElementById('balance').textContent = formatCurrency(data.balance);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          document.getElementById('balance').innerHTML =
+            `<div class="text-red-600">${error.message}</div>`;
+        });
+    }
+
+    // Fetch recent transactions
+    function fetchTransactions() {
+      fetch('/api/banking/transactions', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        },
+        credentials: 'include'
+      })
+        .then(response => {
+          if (!response.ok) {
+            return response.json().then(err => {
+              throw new Error(err.error || 'Failed to fetch transactions');
+            });
+          }
+          return response.json();
+        })
+        .then(data => {
+          const transactionsDiv = document.getElementById('transactions');
+          if (!data || data.length === 0) {
+            transactionsDiv.innerHTML =
+              '<div class="text-center text-gray-500 py-4">No recent transactions</div>';
+            return;
+          }
+
+          transactionsDiv.innerHTML = data.map(transaction => `
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+              <div class="flex-1">
+                <div class="flex items-center space-x-2">
+                  <div class="h-2 w-2 rounded-full ${transaction.transactionType === 'CREDIT' ? 'bg-green-500' : 'bg-red-500'}"></div>
+                  <div class="text-sm font-medium ${transaction.transactionType === 'CREDIT' ? 'text-green-600' : 'text-red-600'}">
+                    ${transaction.transactionType === 'CREDIT' ? '+ ' : '- '}${formatCurrency(transaction.amount)}
+                  </div>
+                </div>
+                <div class="text-xs text-gray-500 mt-1">${transaction.description || '-'}</div>
+              </div>
+              <div class="text-right">
+                <div class="text-xs font-medium text-gray-900">${formatDate(transaction.transactionDate).split(',')[0]}</div>
+                <div class="text-xs text-gray-500">${formatDate(transaction.transactionDate).split(',')[1]}</div>
+              </div>
+            </div>
+          `).join('');
+        })
+        .catch(error => {
+          document.getElementById('transactions').innerHTML =
+            `<div class="text-red-600 text-center py-4">${error.message}</div>`;
+          console.error('Error:', error);
+        });
+    }
+
+    // Show transaction modal
+    function showModal(type) {
+      if (type === 'update') {
+        document.getElementById('updateModal').classList.remove('hidden');
+        // Populate the update form with current details
+        fetch('/api/banking/account', {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json'
+          },
+          credentials: 'include'
+        })
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('firstName').value = data.firstName;
+            document.getElementById('lastName').value = data.lastName;
+            document.getElementById('phoneNumber').value = data.phoneNumber;
+            document.getElementById('address').value = data.address;
+          });
+      } else {
+        document.getElementById('modalTitle').textContent =
+          type === 'deposit' ? 'Make a Deposit' : 'Make a Withdrawal';
+        document.getElementById('transactionType').value = type;
+        document.getElementById('transactionModal').classList.remove('hidden');
+      }
+    }
+
+    // Hide transaction modal
+    function hideModal() {
+      document.getElementById('transactionModal').classList.add('hidden');
+      document.getElementById('transactionForm').reset();
+    }
+
+    // Hide update modal
+    function hideUpdateModal() {
+      document.getElementById('updateModal').classList.add('hidden');
+      document.getElementById('updateForm').reset();
+    }
+
+    // Handle transaction submission
+    function handleTransaction(event) {
+      event.preventDefault();
+      const type = document.getElementById('transactionType').value;
+      const amount = document.getElementById('amount').value;
+      const description = document.getElementById('description').value || undefined;
+
+      const url = `/api/banking/${type}`;
+      const params = new URLSearchParams();
+      params.append('amount', amount);
+      if (description) {
+        params.append('description', description);
+      }
+
+      fetch(`${url}?${params}`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        credentials: 'include'
+      })
+        .then(response => {
+          if (!response.ok) {
+            return response.json().then(err => {
+              throw new Error(err.error || 'Transaction failed');
+            });
+          }
+          return response.json();
+        })
+        .then(() => {
+          hideModal();
+          fetchBalance();
+          fetchTransactions();
+        })
+        .catch(error => {
+          alert(error.message);
+          console.error('Error:', error);
+        });
+    }
+
+    // Handle account update
+    function handleUpdate(event) {
+      event.preventDefault();
+      const formData = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        phoneNumber: document.getElementById('phoneNumber').value,
+        address: document.getElementById('address').value
+      };
+
+      fetch('/api/banking/account/update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(formData)
+      })
+        .then(response => {
+          if (!response.ok) {
+            return response.json().then(err => {
+              throw new Error(err.error || 'Update failed');
+            });
+          }
+          return response.json();
+        })
+        .then(() => {
+          hideUpdateModal();
+          fetchAccountDetails();
+          alert('Account updated successfully!');
+        })
+        .catch(error => {
+          alert(error.message);
+          console.error('Error:', error);
+        });
+    }
+
+    let currentPin = '';
+    let tempPin = '';
+    let pinMode = '';
+
+    function showPinModal(mode) {
+      pinMode = mode;
+      currentPin = '';
+      document.getElementById('pinModal').classList.remove('hidden');
+
+      // Check if PIN is already set
+      fetch('/api/banking/check-pin', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        },
+        credentials: 'include'
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (!data.pinSet) {
+            document.getElementById('pinModalTitle').textContent = 'Set Up PIN';
+            document.getElementById('pinSetupMessage').classList.remove('hidden');
+            pinMode = 'setup';
+          } else {
+            document.getElementById('pinModalTitle').textContent = 'Enter PIN';
+            document.getElementById('pinSetupMessage').classList.add('hidden');
+          }
+        });
+
+      updatePinDisplay();
+    }
+
+    function hidePinModal() {
+      document.getElementById('pinModal').classList.add('hidden');
+      document.getElementById('pinSetupMessage').classList.add('hidden');
+      document.getElementById('pinConfirmMessage').classList.add('hidden');
+      currentPin = '';
+      tempPin = '';
+      updatePinDisplay();
+    }
+
+    function handlePinInput(value) {
+      if (value === 'clear') {
+        currentPin = currentPin.slice(0, -1);
+      } else if (currentPin.length < 6) {
+        currentPin += value;
+      }
+
+      updatePinDisplay();
+
+      if (currentPin.length === 6) {
+        if (pinMode === 'setup') {
+          if (!tempPin) {
+            tempPin = currentPin;
+            currentPin = '';
+            document.getElementById('pinSetupMessage').classList.add('hidden');
+            document.getElementById('pinConfirmMessage').classList.remove('hidden');
+            document.getElementById('pinModalTitle').textContent = 'Confirm PIN';
+            updatePinDisplay();
+          } else {
+            if (tempPin === currentPin) {
+              // Save PIN
+              fetch('/api/banking/set-pin', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({ pin: currentPin })
+              })
+                .then(response => {
+                  if (response.ok) {
+                    hidePinModal();
+                    showBalance();
+                  }
+                });
+            } else {
+              alert('PINs do not match. Please try again.');
+              tempPin = '';
+              currentPin = '';
+              document.getElementById('pinConfirmMessage').classList.add('hidden');
+              document.getElementById('pinSetupMessage').classList.remove('hidden');
+              document.getElementById('pinModalTitle').textContent = 'Set Up PIN';
+              updatePinDisplay();
+            }
+          }
+        } else {
+          // Verify PIN
+          fetch('/api/banking/verify-pin', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            credentials: 'include',
+            body: JSON.stringify({ pin: currentPin })
+          })
+            .then(response => {
+              if (response.ok) {
+                hidePinModal();
+                showBalance();
+              } else {
+                alert('Incorrect PIN. Please try again.');
+                currentPin = '';
+                updatePinDisplay();
+              }
+            });
+        }
+      }
+    }
+
+    function updatePinDisplay() {
+      for (let i = 1; i <= 6; i++) {
+        const dot = document.getElementById(`pin${i}`);
+        if (i <= currentPin.length) {
+          dot.classList.remove('bg-gray-200');
+          dot.classList.add('bg-primary-600');
+        } else {
+          dot.classList.remove('bg-primary-600');
+          dot.classList.add('bg-gray-200');
+        }
+      }
+    }
+
+    function showBalance() {
+      document.getElementById('balanceHidden').classList.add('hidden');
+      document.getElementById('balance').classList.remove('hidden');
+      fetchBalance();
+    }
+
+    let pinUpdateStep = 'current'; // 'current', 'new', 'confirm'
+    let currentPinInput = '';
+    let newPinInput = '';
+    let confirmPinInput = '';
+
+    function showPinUpdateModal() {
+      document.getElementById('pinUpdateModal').classList.remove('hidden');
+      pinUpdateStep = 'current';
+      currentPinInput = '';
+      newPinInput = '';
+      confirmPinInput = '';
+      updatePinUpdateDisplay();
+    }
+
+    function hidePinUpdateModal() {
+      document.getElementById('pinUpdateModal').classList.add('hidden');
+      pinUpdateStep = 'current';
+      currentPinInput = '';
+      newPinInput = '';
+      confirmPinInput = '';
+      updatePinUpdateDisplay();
+    }
+
+    function handlePinUpdateInput(value) {
+      let currentInput = '';
+      switch (pinUpdateStep) {
+        case 'current':
+          currentInput = currentPinInput;
+          break;
+        case 'new':
+          currentInput = newPinInput;
+          break;
+        case 'confirm':
+          currentInput = confirmPinInput;
+          break;
+      }
+
+      if (value === 'clear') {
+        currentInput = currentInput.slice(0, -1);
+      } else if (currentInput.length < 6) {
+        currentInput += value;
+      }
+
+      switch (pinUpdateStep) {
+        case 'current':
+          currentPinInput = currentInput;
+          if (currentPinInput.length === 6) {
+            // Verify current PIN
+            fetch('/api/banking/verify-pin', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              credentials: 'include',
+              body: JSON.stringify({ pin: currentPinInput })
+            })
+              .then(response => {
+                if (response.ok) {
+                  pinUpdateStep = 'new';
+                  updatePinUpdateDisplay();
+                } else {
+                  alert('Incorrect current PIN');
+                  currentPinInput = '';
+                  updatePinUpdateDisplay();
+                }
+              });
+          }
+          break;
+        case 'new':
+          newPinInput = currentInput;
+          if (newPinInput.length === 6) {
+            pinUpdateStep = 'confirm';
+          }
+          break;
+        case 'confirm':
+          confirmPinInput = currentInput;
+          if (confirmPinInput.length === 6) {
+            if (newPinInput === confirmPinInput) {
+              // Update PIN
+              fetch('/api/banking/update-pin', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({ pin: newPinInput })
+              })
+                .then(response => {
+                  if (response.ok) {
+                    alert('PIN updated successfully');
+                    hidePinUpdateModal();
+                  } else {
+                    alert('Failed to update PIN');
+                    confirmPinInput = '';
+                    updatePinUpdateDisplay();
+                  }
+                });
+            } else {
+              alert('New PINs do not match');
+              newPinInput = '';
+              confirmPinInput = '';
+              pinUpdateStep = 'new';
+              updatePinUpdateDisplay();
+            }
+          }
+          break;
+      }
+      updatePinUpdateDisplay();
+    }
+
+    function updatePinUpdateDisplay() {
+      // Update current PIN display
+      for (let i = 1; i <= 6; i++) {
+        const dot = document.getElementById(`currentPin${i}`);
+        if (i <= currentPinInput.length) {
+          dot.classList.remove('bg-gray-200');
+          dot.classList.add('bg-primary-600');
+        } else {
+          dot.classList.remove('bg-primary-600');
+          dot.classList.add('bg-gray-200');
+        }
+      }
+
+      // Update new PIN display
+      for (let i = 1; i <= 6; i++) {
+        const dot = document.getElementById(`newPin${i}`);
+        if (i <= newPinInput.length) {
+          dot.classList.remove('bg-gray-200');
+          dot.classList.add('bg-primary-600');
+        } else {
+          dot.classList.remove('bg-primary-600');
+          dot.classList.add('bg-gray-200');
+        }
+      }
+
+      // Update confirm PIN display
+      for (let i = 1; i <= 6; i++) {
+        const dot = document.getElementById(`confirmPin${i}`);
+        if (i <= confirmPinInput.length) {
+          dot.classList.remove('bg-gray-200');
+          dot.classList.add('bg-primary-600');
+        } else {
+          dot.classList.remove('bg-primary-600');
+          dot.classList.add('bg-gray-200');
+        }
+      }
+    }
+
+    // Initial load
+    fetchBalance();
+    fetchTransactions();
+    fetchAccountDetails();
+  </script>
+</body>
+
+</html>
