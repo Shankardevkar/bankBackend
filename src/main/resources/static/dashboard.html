@@ -3,10 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#0284c7">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard - Bank Management</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -37,24 +34,23 @@
   </script>
 </head>
 
-<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen font-sans antialiased">
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen font-sans">
   <!-- Navigation -->
-  <nav class="bg-white shadow-lg border-b border-gray-100 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-14 sm:h-16">
+  <nav class="bg-white shadow-lg border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
         <div class="flex items-center">
-          <h1
-            class="text-lg sm:text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent truncate max-w-[200px] sm:max-w-none">
+          <h1 class="text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent">
             Bank Management System
           </h1>
         </div>
-        <div class="flex items-center space-x-2 sm:space-x-4">
+        <div class="flex items-center space-x-4">
           <a href="/dashboard"
-            class="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 rounded-md hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-md hover:shadow-lg active:scale-95">
+            class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 rounded-md hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-md hover:shadow-lg">
             Dashboard
           </a>
           <a href="/logout"
-            class="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-md transition-all duration-200 active:scale-95">
+            class="px-4 py-2 text-sm font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-md transition-all duration-200">
             Logout
           </a>
         </div>
@@ -63,14 +59,13 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="max-w-7xl mx-auto p-3 sm:px-6 lg:px-8 py-3 sm:py-6">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Balance Card -->
-      <div
-        class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden touch-manipulation">
-        <div class="p-4 sm:p-6 space-y-4">
+      <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+        <div class="p-6 space-y-4">
           <div class="flex items-center justify-between">
-            <h2 class="text-base sm:text-lg font-semibold text-gray-900">Account Balance</h2>
+            <h2 class="text-lg font-semibold text-gray-900">Account Balance</h2>
             <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600" viewBox="0 0 20 20"
                 fill="currentColor">
@@ -82,25 +77,25 @@
             </div>
           </div>
           <div id="balanceContainer" class="text-center cursor-pointer" onclick="showPinModal('check')">
-            <div id="balance" class="hidden text-2xl sm:text-4xl font-bold text-gray-900">Loading...</div>
+            <div id="balance" class="hidden text-4xl font-bold text-gray-900">Loading...</div>
             <div id="balanceHidden" class="flex items-center justify-center space-x-2 py-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6 text-gray-400" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
-              <span class="text-sm sm:text-base text-gray-500">Tap to check balance</span>
+              <span class="text-gray-500">Tap to check balance</span>
             </div>
           </div>
         </div>
-        <div class="px-4 sm:px-6 pb-4 sm:pb-6">
-          <div class="grid grid-cols-2 gap-3 sm:gap-4">
+        <div class="px-6 pb-6">
+          <div class="grid grid-cols-2 gap-4">
             <button onclick="showModal('deposit')"
-              class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-green-500 to-green-600 rounded-lg hover:from-green-600 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200 shadow-sm hover:shadow-md">
+              class="w-full px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-green-500 to-green-600 rounded-lg hover:from-green-600 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all duration-200 shadow-sm hover:shadow-md">
               Deposit
             </button>
             <button onclick="showModal('withdraw')"
-              class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-red-500 to-red-600 rounded-lg hover:from-red-600 hover:to-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-200 shadow-sm hover:shadow-md">
+              class="w-full px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-red-500 to-red-600 rounded-lg hover:from-red-600 hover:to-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-200 shadow-sm hover:shadow-md">
               Withdraw
             </button>
           </div>
@@ -109,9 +104,9 @@
 
       <!-- Account Details Card -->
       <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-        <div class="p-4 sm:p-6 space-y-4">
+        <div class="p-6 space-y-4">
           <div class="flex items-center justify-between">
-            <h2 class="text-base sm:text-lg font-semibold text-gray-900">Account Details</h2>
+            <h2 class="text-lg font-semibold text-gray-900">Account Details</h2>
             <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600" viewBox="0 0 20 20"
                 fill="currentColor">
@@ -121,15 +116,19 @@
           </div>
           <div id="accountInfo" class="space-y-3 text-gray-600">Loading...</div>
         </div>
-        <div class="px-4 sm:px-6 pb-4 sm:pb-6">
+        <div class="px-6 pb-6">
           <div class="flex flex-col space-y-3">
             <button onclick="showModal('update')"
-              class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 rounded-lg hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm hover:shadow-md">
+              class="w-full px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 rounded-lg hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm hover:shadow-md">
               Update Account
             </button>
             <button onclick="showPinUpdateModal()"
-              class="w-full px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+              class="w-full px-4 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
               Update PIN
+            </button>
+            <button onclick="showDeleteAccountModal()"
+              class="w-full px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-red-600 to-red-700 rounded-lg hover:from-red-700 hover:to-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-all duration-200">
+              Delete Account
             </button>
           </div>
         </div>
@@ -137,25 +136,73 @@
 
       <!-- Recent Transactions Card -->
       <div class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-        <div class="p-4 sm:p-6 space-y-4">
+        <div class="p-6 space-y-4">
           <div class="flex items-center justify-between">
-            <h2 class="text-base sm:text-lg font-semibold text-gray-900">Recent Transactions</h2>
-            <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600" viewBox="0 0 20 20"
+            <h2 class="text-lg font-semibold text-gray-900">Recent Transactions</h2>
+            <div class="flex items-center space-x-3">
+              <!-- Filter Dropdown -->
+              <select id="transactionFilter" onchange="filterTransactions()"
+                class="text-sm rounded-lg border-gray-300 focus:ring-primary-500 focus:border-primary-500">
+                <option value="all">All Transactions</option>
+                <option value="CREDIT">Deposits Only</option>
+                <option value="DEBIT">Withdrawals Only</option>
+              </select>
+              <div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary-600" viewBox="0 0 20 20"
+                  fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 4a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-4 1a1 1 0 00-1 1v2a1 1 0 102 0v-2a1 1 0 00-1-1z"
+                    clip-rule="evenodd" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transaction Stats -->
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div class="bg-green-50 rounded-lg p-3">
+              <div class="text-sm text-green-600 font-medium">Total Deposits</div>
+              <div id="totalDeposits" class="text-lg font-semibold text-green-700">₹0.00</div>
+            </div>
+            <div class="bg-red-50 rounded-lg p-3">
+              <div class="text-sm text-red-600 font-medium">Total Withdrawals</div>
+              <div id="totalWithdrawals" class="text-lg font-semibold text-red-700">₹0.00</div>
+            </div>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="relative">
+            <input type="text" id="transactionSearch" placeholder="Search transactions..."
+              onkeyup="searchTransactions()"
+              class="w-full pl-10 pr-4 py-2 rounded-lg border-gray-300 focus:ring-primary-500 focus:border-primary-500">
+            <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
                 fill="currentColor">
                 <path fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 4a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-4 1a1 1 0 00-1 1v2a1 1 0 102 0v-2a1 1 0 00-1-1z"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
                   clip-rule="evenodd" />
               </svg>
             </div>
           </div>
-          <div class="flex justify-between items-center text-xs sm:text-sm font-medium text-gray-500 pb-2 border-b">
+
+          <div class="flex justify-between items-center text-sm font-medium text-gray-500 pb-2 border-b">
             <span>Transaction</span>
             <span>Amount</span>
           </div>
           <div id="transactions"
-            class="space-y-3 max-h-[300px] sm:max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+            class="space-y-3 max-h-[400px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
             <div class="text-gray-600 text-center py-4">Loading transactions...</div>
+          </div>
+
+          <!-- Empty State -->
+          <div id="noTransactions" class="hidden text-center py-8">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400 mb-4" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            <p class="text-gray-600 font-medium">No transactions found</p>
+            <p class="text-gray-500 text-sm mt-1">Try adjusting your search or filter settings</p>
           </div>
         </div>
       </div>
@@ -164,35 +211,114 @@
 
   <!-- Transaction Modal -->
   <div id="transactionModal"
-    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-xl w-full max-w-md transform transition-all">
-      <div class="px-4 sm:px-6 py-4 border-b border-gray-100">
-        <h2 id="modalTitle" class="text-lg sm:text-xl font-semibold text-gray-900">Transaction</h2>
+    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center">
+    <div class="bg-white rounded-xl shadow-xl max-w-md w-full mx-4 transform transition-all">
+      <div class="px-6 py-4 border-b border-gray-100">
+        <div class="flex items-center justify-between">
+          <h2 id="modalTitle" class="text-xl font-semibold text-gray-900">Transaction</h2>
+          <button onclick="hideModal()" class="text-gray-400 hover:text-gray-500 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
-      <form id="transactionForm" onsubmit="handleTransaction(event)" class="px-4 sm:px-6 py-4 space-y-4">
-        <div>
-          <label for="amount" class="block text-sm font-medium text-gray-700">Amount</label>
-          <div class="mt-1 relative rounded-md shadow-sm">
+      <form id="transactionForm" onsubmit="handleTransaction(event)" class="px-6 py-4">
+        <!-- Quick Amount Buttons -->
+        <div class="mb-6">
+          <label class="block text-sm font-medium text-gray-700 mb-3">Quick Amount</label>
+          <div class="grid grid-cols-3 gap-3">
+            <button type="button" onclick="setAmount(500)"
+              class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+              ₹500
+            </button>
+            <button type="button" onclick="setAmount(1000)"
+              class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+              ₹1,000
+            </button>
+            <button type="button" onclick="setAmount(2000)"
+              class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+              ₹2,000
+            </button>
+            <button type="button" onclick="setAmount(5000)"
+              class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+              ₹5,000
+            </button>
+            <button type="button" onclick="setAmount(10000)"
+              class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+              ₹10,000
+            </button>
+            <button type="button" onclick="setAmount(20000)"
+              class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+              ₹20,000
+            </button>
+          </div>
+        </div>
+
+        <!-- Custom Amount Input -->
+        <div class="mb-6">
+          <label for="amount" class="block text-sm font-medium text-gray-700 mb-2">Custom Amount</label>
+          <div class="relative rounded-lg shadow-sm">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <span class="text-gray-500 sm:text-sm">₹</span>
             </div>
             <input type="number" id="amount" name="amount" step="0.01" min="0.01" required
-              class="pl-7 block w-full rounded-lg border-gray-300 focus:ring-primary-500 focus:border-primary-500">
+              class="pl-7 block w-full rounded-lg border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+              placeholder="Enter amount">
+            <div class="absolute inset-y-0 right-0 flex items-center">
+              <label for="currency" class="sr-only">Currency</label>
+              <select id="currency" name="currency"
+                class="h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-gray-500 sm:text-sm rounded-md">
+                <option>INR</option>
+              </select>
+            </div>
           </div>
         </div>
-        <div>
-          <label for="description" class="block text-sm font-medium text-gray-700">Description (Optional)</label>
-          <input type="text" id="description" name="description"
-            class="mt-1 block w-full rounded-lg border-gray-300 focus:ring-primary-500 focus:border-primary-500">
+
+        <!-- Description Input -->
+        <div class="mb-6">
+          <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
+            Description
+            <span class="text-gray-400 font-normal">(Optional)</span>
+          </label>
+          <div class="relative rounded-lg shadow-sm">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20"
+                fill="currentColor">
+                <path fill-rule="evenodd"
+                  d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+                  clip-rule="evenodd" />
+              </svg>
+            </div>
+            <input type="text" id="description" name="description"
+              class="pl-10 block w-full rounded-lg border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all"
+              placeholder="Add a note">
+          </div>
         </div>
+
         <input type="hidden" id="transactionType" name="transactionType">
-        <div class="flex space-x-3 pt-2">
-          <button type="submit"
-            class="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 rounded-lg hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-sm hover:shadow-md">
-            Submit
+
+        <!-- Transaction Summary -->
+        <div class="bg-gray-50 rounded-lg p-4 mb-6">
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-gray-500">Transaction Type</span>
+            <span id="summaryType" class="font-medium text-gray-900">Deposit</span>
+          </div>
+          <div class="flex items-center justify-between text-sm mt-2">
+            <span class="text-gray-500">Amount</span>
+            <span id="summaryAmount" class="font-medium text-gray-900">₹0.00</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex space-x-3">
+          <button type="submit" id="submitButton"
+            class="flex-1 px-4 py-3 text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-primary-700 rounded-lg hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 shadow-md hover:shadow-lg">
+            Confirm
           </button>
           <button type="button" onclick="hideModal()"
-            class="flex-1 px-4 py-2.5 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
+            class="flex-1 px-4 py-3 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-all duration-200">
             Cancel
           </button>
         </div>
@@ -202,12 +328,12 @@
 
   <!-- Update Account Modal -->
   <div id="updateModal"
-    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-xl w-full max-w-md transform transition-all">
-      <div class="px-4 sm:px-6 py-4 border-b border-gray-100">
-        <h2 class="text-lg sm:text-xl font-semibold text-gray-900">Update Account</h2>
+    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center">
+    <div class="bg-white rounded-xl shadow-xl max-w-md w-full mx-4 transform transition-all">
+      <div class="px-6 py-4 border-b border-gray-100">
+        <h2 class="text-xl font-semibold text-gray-900">Update Account</h2>
       </div>
-      <form id="updateForm" onsubmit="handleUpdate(event)" class="px-4 sm:px-6 py-4 space-y-4">
+      <form id="updateForm" onsubmit="handleUpdate(event)" class="px-6 py-4 space-y-4">
         <div class="grid grid-cols-2 gap-4">
           <div>
             <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
@@ -246,8 +372,8 @@
 
   <!-- PIN Modal -->
   <div id="pinModal"
-    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-xl w-full max-w-md transform transition-all">
+    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center">
+    <div class="bg-white rounded-xl shadow-xl max-w-md w-full mx-4 transform transition-all">
       <div class="px-6 py-4 border-b border-gray-100">
         <h2 id="pinModalTitle" class="text-xl font-semibold text-gray-900">Enter PIN</h2>
       </div>
@@ -298,8 +424,8 @@
 
   <!-- PIN Update Modal -->
   <div id="pinUpdateModal"
-    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-xl w-full max-w-md transform transition-all">
+    class="hidden fixed inset-0 bg-gray-900 bg-opacity-50 backdrop-blur-sm flex items-center justify-center">
+    <div class="bg-white rounded-xl shadow-xl max-w-md w-full mx-4 transform transition-all">
       <div class="px-6 py-4 border-b border-gray-100">
         <h2 class="text-xl font-semibold text-gray-900">Update PIN</h2>
       </div>
@@ -374,6 +500,9 @@
     </div>
   </div>
 
+  <!-- Toast Container -->
+  <div id="toastContainer" class="fixed bottom-4 right-4 z-50 space-y-4"></div>
+
   <script>
     // Format currency
     function formatCurrency(amount) {
@@ -416,26 +545,26 @@
           }
           const accountInfo = document.getElementById('accountInfo');
           accountInfo.innerHTML = `
-            <div class="space-y-2 sm:space-y-3">
+            <div class="space-y-3">
               <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                <span class="text-xs sm:text-sm text-gray-500">Account Number</span>
-                <span class="text-xs sm:text-sm font-medium text-gray-900">${data.accountNumber}</span>
+                <span class="text-sm text-gray-500">Account Number</span>
+                <span class="text-sm font-medium text-gray-900">${data.accountNumber}</span>
               </div>
               <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                <span class="text-xs sm:text-sm text-gray-500">Account Type</span>
-                <span class="text-xs sm:text-sm font-medium text-gray-900">${data.accountType}</span>
+                <span class="text-sm text-gray-500">Account Type</span>
+                <span class="text-sm font-medium text-gray-900">${data.accountType}</span>
               </div>
               <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                <span class="text-xs sm:text-sm text-gray-500">Name</span>
-                <span class="text-xs sm:text-sm font-medium text-gray-900">${data.firstName} ${data.lastName}</span>
+                <span class="text-sm text-gray-500">Name</span>
+                <span class="text-sm font-medium text-gray-900">${data.firstName} ${data.lastName}</span>
               </div>
               <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                <span class="text-xs sm:text-sm text-gray-500">Phone</span>
-                <span class="text-xs sm:text-sm font-medium text-gray-900">${data.phoneNumber}</span>
+                <span class="text-sm text-gray-500">Phone</span>
+                <span class="text-sm font-medium text-gray-900">${data.phoneNumber}</span>
               </div>
               <div class="flex items-center justify-between py-2 border-b border-gray-100">
-                <span class="text-xs sm:text-sm text-gray-500">Address</span>
-                <span class="text-xs sm:text-sm font-medium text-gray-900 text-right flex-1 ml-4">${data.address}</span>
+                <span class="text-sm text-gray-500">Address</span>
+                <span class="text-sm font-medium text-gray-900">${data.address}</span>
               </div>
             </div>
           `;
@@ -443,8 +572,7 @@
         .catch(error => {
           console.error('Error:', error);
           document.getElementById('accountInfo').innerHTML =
-            `<div class="text-red-600 text-center py-4 text-sm">${error.message}</div>`;
-          `<div class="text-red-600 text-center py-4">${error.message}</div>`;
+            `<div class="text-red-600 text-center py-4">${error.message}</div>`;
         });
     }
 
@@ -477,7 +605,78 @@
         });
     }
 
-    // Fetch recent transactions
+    // Add these new functions for enhanced transaction history
+    let allTransactions = [];
+
+    function filterTransactions() {
+      const filterValue = document.getElementById('transactionFilter').value;
+      const searchValue = document.getElementById('transactionSearch').value.toLowerCase();
+
+      let filteredTransactions = allTransactions;
+
+      if (filterValue !== 'all') {
+        filteredTransactions = filteredTransactions.filter(t => t.transactionType === filterValue);
+      }
+
+      if (searchValue) {
+        filteredTransactions = filteredTransactions.filter(t =>
+          t.description?.toLowerCase().includes(searchValue) ||
+          formatCurrency(t.amount).toLowerCase().includes(searchValue) ||
+          formatDate(t.transactionDate).toLowerCase().includes(searchValue)
+        );
+      }
+
+      updateTransactionDisplay(filteredTransactions);
+    }
+
+    function searchTransactions() {
+      filterTransactions();
+    }
+
+    function updateTransactionDisplay(transactions) {
+      const transactionsDiv = document.getElementById('transactions');
+      const noTransactionsDiv = document.getElementById('noTransactions');
+
+      if (!transactions || transactions.length === 0) {
+        transactionsDiv.classList.add('hidden');
+        noTransactionsDiv.classList.remove('hidden');
+        return;
+      }
+
+      transactionsDiv.classList.remove('hidden');
+      noTransactionsDiv.classList.add('hidden');
+
+      transactionsDiv.innerHTML = transactions.map(transaction => `
+        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+          <div class="flex-1">
+            <div class="flex items-center space-x-3">
+              <div class="flex items-center space-x-2">
+                <div class="h-2 w-2 rounded-full ${transaction.transactionType === 'CREDIT' ? 'bg-green-500' : 'bg-red-500'}"></div>
+                <div class="text-sm font-medium ${transaction.transactionType === 'CREDIT' ? 'text-green-600' : 'text-red-600'}">
+                  ${transaction.transactionType === 'CREDIT' ? '+ ' : '- '}${formatCurrency(transaction.amount)}
+                </div>
+              </div>
+              <div class="text-xs px-2 py-1 rounded-full ${transaction.transactionType === 'CREDIT' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                ${transaction.transactionType === 'CREDIT' ? 'Deposit' : 'Withdrawal'}
+              </div>
+            </div>
+            <div class="text-sm text-gray-600 mt-1">${transaction.description || 'No description'}</div>
+            <div class="flex items-center space-x-2 mt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+              </svg>
+              <span class="text-xs text-gray-500">${formatDate(transaction.transactionDate)}</span>
+            </div>
+          </div>
+          <div class="ml-4">
+            <div class="text-xs font-medium text-gray-500">Transaction ID</div>
+            <div class="text-sm font-mono text-gray-600">#${transaction.id}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Modify the fetchTransactions function to include the new features
     function fetchTransactions() {
       fetch('/api/banking/transactions', {
         method: 'GET',
@@ -495,36 +694,28 @@
           return response.json();
         })
         .then(data => {
-          const transactionsDiv = document.getElementById('transactions');
-          if (!data || data.length === 0) {
-            transactionsDiv.innerHTML =
-              '<div class="text-center text-gray-500 py-4">No recent transactions</div>';
-            return;
-          }
-
-          transactionsDiv.innerHTML = data.map(transaction => `
-            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-              <div class="flex-1">
-                <div class="flex items-center space-x-2">
-                  <div class="h-2 w-2 rounded-full ${transaction.transactionType === 'CREDIT' ? 'bg-green-500' : 'bg-red-500'}"></div>
-                  <div class="text-sm font-medium ${transaction.transactionType === 'CREDIT' ? 'text-green-600' : 'text-red-600'}">
-                    ${transaction.transactionType === 'CREDIT' ? '+ ' : '- '}${formatCurrency(transaction.amount)}
-                  </div>
-                </div>
-                <div class="text-xs text-gray-500 mt-1">${transaction.description || '-'}</div>
-              </div>
-              <div class="text-right">
-                <div class="text-xs font-medium text-gray-900">${formatDate(transaction.transactionDate).split(',')[0]}</div>
-                <div class="text-xs text-gray-500">${formatDate(transaction.transactionDate).split(',')[1]}</div>
-              </div>
-            </div>
-          `).join('');
+          allTransactions = data;
+          updateTransactionDisplay(data);
+          updateTransactionStats(data);
         })
         .catch(error => {
           document.getElementById('transactions').innerHTML =
             `<div class="text-red-600 text-center py-4">${error.message}</div>`;
           console.error('Error:', error);
         });
+    }
+
+    function updateTransactionStats(transactions) {
+      const totalDeposits = transactions
+        .filter(t => t.transactionType === 'CREDIT')
+        .reduce((sum, t) => sum + t.amount, 0);
+
+      const totalWithdrawals = transactions
+        .filter(t => t.transactionType === 'DEBIT')
+        .reduce((sum, t) => sum + t.amount, 0);
+
+      document.getElementById('totalDeposits').textContent = formatCurrency(totalDeposits);
+      document.getElementById('totalWithdrawals').textContent = formatCurrency(totalWithdrawals);
     }
 
     // Show transaction modal
@@ -547,10 +738,12 @@
             document.getElementById('address').value = data.address;
           });
       } else {
-        document.getElementById('modalTitle').textContent =
-          type === 'deposit' ? 'Make a Deposit' : 'Make a Withdrawal';
+        document.getElementById('modalTitle').textContent = type === 'deposit' ? 'Make a Deposit' : 'Make a Withdrawal';
         document.getElementById('transactionType').value = type;
         document.getElementById('transactionModal').classList.remove('hidden');
+        document.getElementById('amount').value = '';
+        document.getElementById('description').value = '';
+        updateTransactionSummary();
       }
     }
 
@@ -566,7 +759,72 @@
       document.getElementById('updateForm').reset();
     }
 
-    // Handle transaction submission
+    // Add Toast Notification System
+    function showToast(message, type = 'info') {
+      const toastContainer = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+
+      // Define icons for different toast types
+      const icons = {
+        success: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>`,
+        error: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+        </svg>`,
+        warning: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+        </svg>`,
+        info: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+        </svg>`
+      };
+
+      // Define colors for different toast types
+      const colors = {
+        success: 'bg-green-50 text-green-800 border-green-200',
+        error: 'bg-red-50 text-red-800 border-red-200',
+        warning: 'bg-yellow-50 text-yellow-800 border-yellow-200',
+        info: 'bg-blue-50 text-blue-800 border-blue-200'
+      };
+
+      const iconColors = {
+        success: 'text-green-400',
+        error: 'text-red-400',
+        warning: 'text-yellow-400',
+        info: 'text-blue-400'
+      };
+
+      toast.className = `flex items-center p-4 mb-4 rounded-lg border ${colors[type]} transform transition-all duration-300 ease-in-out translate-x-full`;
+      toast.innerHTML = `
+        <div class="inline-flex flex-shrink-0 justify-center items-center w-8 h-8 ${iconColors[type]}">
+          ${icons[type]}
+        </div>
+        <div class="ml-3 text-sm font-normal">${message}</div>
+        <button type="button" class="ml-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 inline-flex h-8 w-8 hover:bg-gray-100 hover:text-gray-900" onclick="this.parentElement.remove()">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        </button>
+      `;
+
+      toastContainer.appendChild(toast);
+
+      // Animate the toast in
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-x-full');
+      });
+
+      // Auto remove after 5 seconds
+      setTimeout(() => {
+        toast.classList.add('translate-x-full');
+        setTimeout(() => {
+          toast.remove();
+        }, 300);
+      }, 5000);
+    }
+
+    // Modify the handleTransaction function to use the new toast system
     function handleTransaction(event) {
       event.preventDefault();
       const type = document.getElementById('transactionType').value;
@@ -599,14 +857,26 @@
           hideModal();
           fetchBalance();
           fetchTransactions();
+          showToast(`${type.charAt(0).toUpperCase() + type.slice(1)} successful! Amount: ${formatCurrency(amount)}`, 'success');
         })
         .catch(error => {
-          alert(error.message);
+          let errorMessage = error.message;
+          let toastType = 'error';
+
+          // Handle specific error cases
+          if (errorMessage.toLowerCase().includes('insufficient')) {
+            errorMessage = `Insufficient balance for this withdrawal. Available balance: ${formatCurrency(document.getElementById('balance').textContent.replace(/[^0-9.-]+/g, ''))}`;
+            toastType = 'warning';
+          } else if (errorMessage.toLowerCase().includes('invalid')) {
+            toastType = 'warning';
+          }
+
+          showToast(errorMessage, toastType);
           console.error('Error:', error);
         });
     }
 
-    // Handle account update
+    // Modify other alert calls to use the toast system
     function handleUpdate(event) {
       event.preventDefault();
       const formData = {
@@ -636,10 +906,10 @@
         .then(() => {
           hideUpdateModal();
           fetchAccountDetails();
-          alert('Account updated successfully!');
+          showToast('Account details updated successfully!', 'success');
         })
         .catch(error => {
-          alert(error.message);
+          showToast(error.message, 'error');
           console.error('Error:', error);
         });
     }
@@ -719,10 +989,11 @@
                   if (response.ok) {
                     hidePinModal();
                     showBalance();
+                    showToast('PIN set successfully!', 'success');
                   }
                 });
             } else {
-              alert('PINs do not match. Please try again.');
+              showToast('PINs do not match. Please try again.', 'error');
               tempPin = '';
               currentPin = '';
               document.getElementById('pinConfirmMessage').classList.add('hidden');
@@ -747,7 +1018,7 @@
                 hidePinModal();
                 showBalance();
               } else {
-                alert('Incorrect PIN. Please try again.');
+                showToast('Incorrect PIN. Please try again.', 'error');
                 currentPin = '';
                 updatePinDisplay();
               }
@@ -924,6 +1195,33 @@
         }
       }
     }
+
+    // Add these new functions for the enhanced transaction UI
+    function setAmount(amount) {
+      document.getElementById('amount').value = amount;
+      updateTransactionSummary();
+    }
+
+    function updateTransactionSummary() {
+      const amount = document.getElementById('amount').value;
+      const type = document.getElementById('transactionType').value;
+
+      document.getElementById('summaryType').textContent = type.charAt(0).toUpperCase() + type.slice(1);
+      document.getElementById('summaryAmount').textContent = amount ? formatCurrency(parseFloat(amount)) : '₹0.00';
+
+      // Update submit button style based on transaction type
+      const submitButton = document.getElementById('submitButton');
+      if (type === 'deposit') {
+        submitButton.classList.remove('from-red-600', 'to-red-700', 'hover:from-red-700', 'hover:to-red-800', 'focus:ring-red-500');
+        submitButton.classList.add('from-green-600', 'to-green-700', 'hover:from-green-700', 'hover:to-green-800', 'focus:ring-green-500');
+      } else {
+        submitButton.classList.remove('from-green-600', 'to-green-700', 'hover:from-green-700', 'hover:to-green-800', 'focus:ring-green-500');
+        submitButton.classList.add('from-red-600', 'to-red-700', 'hover:from-red-700', 'hover:to-red-800', 'focus:ring-red-500');
+      }
+    }
+
+    // Add event listener for amount input
+    document.getElementById('amount').addEventListener('input', updateTransactionSummary);
 
     // Initial load
     fetchBalance();

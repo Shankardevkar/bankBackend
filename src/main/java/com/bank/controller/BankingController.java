@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
-import java.util.Date;
-import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api/banking")
@@ -254,13 +252,5 @@ public class BankingController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
         }
-    }
-
-    @GetMapping("/health")
-    public ResponseEntity<Map<String, String>> healthCheck() {
-        Map<String, String> status = new HashMap<>();
-        status.put("status", "UP");
-        status.put("timestamp", new Date().toString());
-        return ResponseEntity.ok(status);
     }
 } 
