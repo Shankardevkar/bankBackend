@@ -5,17 +5,15 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: SPRING_DATASOURCE_URL
-        value: ${DATABASE_URL}
+        value: ${SPRING_DATASOURCE_URL}
       - key: SPRING_DATASOURCE_USERNAME
-        value: ${DATABASE_USERNAME}
+        value: ${SPRING_DATASOURCE_USERNAME}
       - key: SPRING_DATASOURCE_PASSWORD
-        value: ${DATABASE_PASSWORD}
+        value: ${SPRING_DATASOURCE_PASSWORD}
       - key: SPRING_JPA_HIBERNATE_DDL_AUTO
         value: update
       - key: SPRING_JPA_SHOW_SQL
         value: true
-      - key: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
-        value: org.hibernate.dialect.MySQLDialect
       - key: JWT_SECRET
         value: ${JWT_SECRET}
       - key: JWT_EXPIRATION
