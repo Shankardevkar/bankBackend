@@ -68,7 +68,9 @@
           Registration failed. Please try again.
         </div>
 
-        <form id="register-form" action="/register" method="post" onsubmit="return validateForm()" class="space-y-6">
+        <form id="register-form" action="/register" method="post" onsubmit="submitRegistrationForm(event)"
+          class="space-y-6">
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label for="firstName" class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
@@ -156,6 +158,51 @@
       }
 
       return true;
+    }
+
+    function submitRegistrationForm(event) {
+      event.preventDefault();
+
+      // First validate the form
+      if (!validateForm()) {
+        return;
+      }
+
+      document.getElementById('error-message').classList.add('hidden');
+
+      // Show loading indicator
+      const submitButton = event.target.querySelector('button[type="submit"]');
+      const originalText = submitButton.textContent;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Creating Account...';
+
+      // Create form data
+      const formData = new FormData(document.getElementById('register-form'));
+
+      // Submit form via fetch
+      fetch('/register', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => {
+          if (response.redirected) {
+            window.location.href = response.url;
+          } else if (response.ok) {
+            window.location.href = '/login.html?registered=true';
+          } else {
+            document.getElementById('error-message').textContent = 'Registration failed. Please try again.';
+            document.getElementById('error-message').classList.remove('hidden');
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+          }
+        })
+        .catch(error => {
+          console.error('Error during registration:', error);
+          document.getElementById('error-message').textContent = 'An error occurred during registration. Please try again.';
+          document.getElementById('error-message').classList.remove('hidden');
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        });
     }
 
     // Show error message if error parameter exists in URL

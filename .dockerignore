@@ -1,9 +1,43 @@
+# Git
 .git
 .gitignore
-README.md
-target/
-*.md
-.env
+
+# IDE
 .idea/
+*.iml
 .vscode/
-*.log 
+.project
+.classpath
+.settings/
+
+# Build
+build/
+out/
+bin/
+
+# Logs
+*.log
+logs/
+
+# Local development
+application-local.properties
+application-dev.properties
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Documentation
+README.md
+docs/
+*.md
+
+# Test files
+src/test/
+*.test.js
+*.spec.js
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store 
