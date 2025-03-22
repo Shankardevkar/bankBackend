@@ -15,22 +15,8 @@ services:
       - key: SPRING_JPA_SHOW_SQL
         value: true
       - key: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
-        value: org.hibernate.dialect.MySQL8Dialect
+        value: org.hibernate.dialect.MySQLDialect
       - key: JWT_SECRET
         value: ${JWT_SECRET}
       - key: JWT_EXPIRATION
         value: 86400000
-
-  - type: pserv
-    name: bank-db
-    env: docker
-    dockerfilePath: ./Dockerfile.mysql
-    envVars:
-      - key: MARIADB_ROOT_PASSWORD
-        value: ${DB_ROOT_PASSWORD}
-      - key: MARIADB_DATABASE
-        value: ${DB_NAME}
-      - key: MARIADB_USER
-        value: ${DB_USER}
-      - key: MARIADB_PASSWORD
-        value: ${DB_PASSWORD}
