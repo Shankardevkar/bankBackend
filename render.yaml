@@ -5,16 +5,16 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: SPRING_DATASOURCE_URL
-        value: ${SPRING_DATASOURCE_URL}
+        value: jdbc:mysql://aws.connect.psdb.cloud/bankdb?sslmode=VERIFY_IDENTITY
       - key: SPRING_DATASOURCE_USERNAME
-        value: ${SPRING_DATASOURCE_USERNAME}
+        value: your-planetscale-username
       - key: SPRING_DATASOURCE_PASSWORD
-        value: ${SPRING_DATASOURCE_PASSWORD}
+        value: your-planetscale-password
       - key: SPRING_JPA_HIBERNATE_DDL_AUTO
         value: update
       - key: SPRING_JPA_SHOW_SQL
         value: true
       - key: JWT_SECRET
-        value: ${JWT_SECRET}
+        value: your-secret-key-here-make-it-long-and-secure
       - key: JWT_EXPIRATION
         value: 86400000
