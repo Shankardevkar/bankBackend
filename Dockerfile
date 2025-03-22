@@ -9,6 +9,9 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
+
+# Expose the port
 EXPOSE 8080
-ENV SPRING_PROFILES_ACTIVE=prod
-CMD ["java", "-jar", "app.jar"] 
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"] 
